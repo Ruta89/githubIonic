@@ -23,6 +23,6 @@ export class UserDetailsPage {
 	
 	// Get the user details and log
 	githubUsers.loadDetails(this.login)
-		.then(user => console.log(user))
+		.then(user => this.user = user)
   }
 }
