@@ -37,5 +37,18 @@ export class GithubUsers {
         });
     });
   }
+  
+  //Get user details from the github api
+  loadDetails(login: string) {
+	  //get the data from the api and return it as a promise
+	  return new Promise<User>(resolve => {
+		  // Change the url to match https://api.github.com/users/{username}
+		  this.http.get(`https://api.github.com/users/${login}`)
+			.map(res => <User>(res.json()))
+			.subscribe(user => {
+				resolve(user);
+			});
+	  });
+  }
 }
 
