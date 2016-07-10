@@ -7,18 +7,17 @@ import {GithubUsers} from '../../providers/github-users/github-users';
 // importuje User model
 import {User} from '../../models/user';
 
-/*
-  Generated class for the UsersPage page.
+// Import User's Details Page
+import {UserDetailsPage} from '../user-details/user-details';
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
+
 @Component({
   templateUrl: 'build/pages/users/users.html',
   
   // Add the GithubUsers provider as part of our page component
   providers: [GithubUsers]
 })
+
 export class UsersPage {
 	// Declare users as an array of User model
 	users: User[];
@@ -29,5 +28,13 @@ export class UsersPage {
     githubUsers
       .load()
       .then(users => this.users = users);
+  }
+  
+  
+  // Navigate to user details page with the login as a parameter  
+  goToDetails(event, login) {
+    this.nav.push(UserDetailsPage, {
+      login: login
+    });
   }
 }
