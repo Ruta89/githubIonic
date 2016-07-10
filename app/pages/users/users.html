@@ -16,6 +16,7 @@
 <ion-content padding>
   <h3>Users view page</h3>
   
+  <ion-searchbar></ion-searchbar>
   <ion-list>
 	<button ion-item *ngFor="let user of users" (click)="goToDetails($event, user.login)">
 		<ion-avatar item-left>

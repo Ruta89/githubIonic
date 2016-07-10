@@ -24,10 +24,15 @@ export class UsersPage {
 
   // Inject the GithubUsers in the constructor of our page component
   constructor(public nav: NavController, githubUsers: GithubUsers) {
-    // Test whether the github provider returns data
+    // Get github users and assign to local user's variable
+	// Test if our seach function works
     githubUsers
-      .load()
-      .then(users => this.users = users);
+      //.load()
+	  .searchUsers('ganga')
+	  .then(users => console.log(users));
+	  //.load()
+	  // User arrow function notation
+      //.then(users => this.users = users);
   }
   
   
