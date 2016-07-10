@@ -1,8 +1,13 @@
 import {Component, ViewChild} from '@angular/core';
 import {ionicBootstrap, Platform, MenuController, Nav} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
-import {HelloIonicPage} from './pages/hello-ionic/hello-ionic';
-import {ListPage} from './pages/list/list';
+
+//import {HelloIonicPage} from './pages/hello-ionic/hello-ionic';
+//import {ListPage} from './pages/list/list';
+import {UsersPage} from './pages/users/users';
+import {ReposPage} from './pages/repos/repos';
+import {OrganizationsPage} from './pages/organizations/organizations'
+
 
 
 @Component({
@@ -11,8 +16,8 @@ import {ListPage} from './pages/list/list';
 class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  // make HelloIonicPage the root (or first) page
-  rootPage: any = HelloIonicPage;
+  // make UsersPage the root (or first) page
+  rootPage: any = UsersPage;
   pages: Array<{title: string, component: any}>;
 
   constructor(
@@ -23,8 +28,11 @@ class MyApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'Hello Ionic', component: HelloIonicPage },
-      { title: 'My First List', component: ListPage }
+      //{ title: 'Hello Ionic', component: HelloIonicPage },
+      //{ title: 'My First List', component: ListPage }
+	  { title: 'Users', component: UsersPage },
+	  { title: 'Repos', component: ReposPage },
+	  { title: 'Organizations', component: OrganizationsPage }
     ];
   }
 
