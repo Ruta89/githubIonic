@@ -23,7 +23,7 @@ export class UsersPage {
 	users: User[];
 
   // Inject the GithubUsers in the constructor of our page component
-  constructor(public nav: NavController, githubUsers: GithubUsers) {
+  constructor(public nav: NavController, private githubUsers: GithubUsers) {
     // Get github users and assign to local user's variable
 	// Test if our seach function works
     githubUsers
@@ -41,5 +41,24 @@ export class UsersPage {
     this.nav.push(UserDetailsPage, {
       login: login
     });
+  }
+   
+  // Search for user's from github  
+  // Handle input event from search bar
+  search(searchTerm) {
+	  let term = searchTerm.target.value;
+	  
+	  // We will only person the search if we have 3 or more characters
+	  if (term.trim() == '' || term.trim().length < 3) {
+		  //Get github users and assign to local user's variable
+		  this.githubUsers
+		  .load()
+		  // Load original users in this case
+		  .then(users => this.users = users)
+	  } else {
+		  // Get the searched users from github
+		  this.githubUsers.searchUsers(term)
+			.then(users => this.users = users)
+	  }
   }
 }
